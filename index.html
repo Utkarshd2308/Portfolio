@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codewave Web Studio – Portfolio</title>
+  <style>
+   
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left,#1f2937 0%,#020617 40%),linear-gradient(135deg,#020617 0%,#312e81 45%,#4f46e5 100%);
+      color: #e5e7eb;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.6),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+.card {
+  background: rgba(15, 23, 42, 0.96);
+  color: white;
+  border: 1px solid #1e293b;
+  border-radius: 13px;
+  padding: 20px;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+}
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 4px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 30% 0, #22c55e 0, #22c55e 4px, #0f172a 40%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e5e7eb;
+      font-size: 17px;
+      font-weight: 650;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 18px 35px rgba(15, 23, 42, 0.9);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: #cbd5f5;
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      transition: width 0.22s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 14px;
+    }
+
+    .nav-links a.active::after {
+      width: 18px;
+    }
+
+    .nav-cta {
+      font-size: 13px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.32), transparent 55%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.88);
+    }
+
+    .nav-cta span {
+      font-size: 16px;
+    }
+
+    .nav-cta:hover {
+      border-color: #38bdf8;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr);
+      gap: 28px;
+      padding-top: 26px;
+      padding-bottom: 32px;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px 3px 3px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.9));
+      font-size: 11px;
+      color: #d1d5db;
+      width: fit-content;
+    }
+
+    .pill-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22c55e 0, #22c55e 3px, #0f172a 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbf7d0;
+      font-size: 12px;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .pill span {
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 5vw, 32px);
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      font-weight: 650;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-tags span {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.9);
+      color: #cbd5f5;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.95);
+    }
+
+    .btn-primary span {
+      font-size: 16px;
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost span {
+      font-size: 14px;
+    }
+
+    .hero-secondary {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-secondary strong {
+      color: #222222;
+      font-weight: 600;
+    }
+
+    .hero-secondary a {
+      color: brown;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96));
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% -10%, rgba(34, 197, 94, 0.4), transparent 55%);
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-avatar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-avatar-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #38bdf8 0, #22c55e 55%, #0f172a 85%);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #e5e7eb;
+    }
+
+    .hero-avatar-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-avatar-text strong {
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .hero-avatar-text span {
+      font-size: 11px;
+      color: #cbd5f5;
+    }
+
+    .hero-status {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #a5f3fc;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hero-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.4);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .metric {
+      padding: 8px 9px;
+      border-radius: 13px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.92);
+    }
+
+    .metric-label {
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .metric-sub {
+      font-size: 10px;
+      color: #a5b4fc;
+    }
+
+    .hero-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-skills span {
+      font-size: 10px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #e5e7eb;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #cbd5f5;
+      border-top: 1px dashed rgba(148, 163, 184, 0.5);
+      padding-top: 7px;
+      margin-top: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hero-card-footer strong {
+      font-weight: 600;
+    }
+
+    .hero-card-footer .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: #38bdf8;
+    }
+
+    .hero-card-footer small {
+      font-size: 10px;
+      color: #9ca3af;
+    }
+
+    .section {
+      margin-top: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .section-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr);
+      gap: 12px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.96);
+      color:white;
+      border: 13px solid var(--border);
+      padding: 14px 14px 13px;
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .about-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .about-item strong {
+      display: block;
+      font-size: 12px;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+    }
+
+    .about-item span {
+      color: #9ca3af;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+      font-size: 12px;
+    }
+
+    .skill-pill {
+      padding: 7px 9px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5f5;
+    }
+
+    .skill-pill span {
+      font-size: 11px;
+    }
+
+    .skill-level {
+      font-size: 10px;
+      color: #a5b4fc;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .project-card {
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.98);
+      padding: 12px 12px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.14);
+      color: #bae6fd;
+      width: fit-content;
+    }
+
+    .project-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 10px;
+      margin-top: 2px;
+      color: #a5b4fc;
+    }
+
+    .project-links {
+      margin-top: 6px;
+      font-size: 11px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .project-links a {
+      color: #38bdf8;
+    }
+
+    .project-links span {
+      font-size: 13px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr);
+      gap: 12px;
+    }
+
+    .contact-details {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .contact-details p + p {
+      margin-top: 6px;
+    }
+
+    .contact-details a {
+      color: #38bdf8;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 11px;
+      color: #cbd5f5;
+    }
+
+    input,
+    textarea {
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.98);
+      color: #e5e7eb;
+      padding: 7px 9px;
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 11px;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .footer strong {
+      color: #e5e7eb;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    @media (min-width: 640px) {
+      .page {
+        padding: 24px 18px 40px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+        align-items: center;
+        gap: 24px;
+        padding-top: 32px;
+        padding-bottom: 36px;
+      }
+
+      .about {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 18px;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .page {
+        padding-inline: 24px;
+      }
+
+      .hero-title {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .skills-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-row-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo">CW</div>
+        <div class="brand-text">
+          <div class="brand-name">Codewave Web Studio</div>
+          <div class="brand-tag"><span style="color:white">Developer • Portfolio</span></div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about" class="active">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="https://wa.me/918087724038?text=Hi%20, I%20want%20to%20Develop%20a%20Website..." class="nav-cta">
+        Let’s talk
+        <span>↗</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero" id="top">
+      <div class="hero-main">
+        <div class="pill">
+          <div class="pill-dot">★</div>
+          <span style="color: white">Building fast, conversion‑focused websites</span>
+        </div>
+
+        <h1 class="hero-title">
+          Hi, I’m <span style="color:brown;">Utkarsh</span> – a web developer who turns local businesses into strong online brands.
+        </h1>
+
+        <p class="hero-sub">
+          Specialising in clean, mobile‑first sites that load fast, look premium and bring real enquiries through WhatsApp and direct calls.
+        </p>
+
+        <div class="hero-tags">
+          <span>Frontend (HTML, CSS, JS)</span>
+          <span>Landing pages</span>
+          <span>Business websites</span>
+          <span>Hosting & deployment</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="https://wa.me/918087724038?text=Hi%20, I%20want%20to%20get%20Website%20Quotation..." class="btn-primary">
+            Get a website quote
+            <span>→</span>
+          </a>
+          <a href="#projects" class="btn-ghost">
+            View recent work
+            <span>▾</span>
+          </a>
+        </div>
+
+        <div class="hero-secondary">
+          <p>
+            <strong><span style="color:#e5e7eb">Based in:</span></strong> Maharashtra, India • Open for freelance and project‑based work.
+          </p>
+        </div>
+      </div>
+
+      <aside class="hero-right">
+        <article class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-avatar">
+              <div class="hero-avatar-circle">U</div>
+              <div class="hero-avatar-text">
+                <strong>Web Developer</strong>
+                <span>Business‑focused builder</span>
+              </div>
+            </div>
+            <div class="hero-status">
+              <span class="hero-status-dot"></span>
+              Available for projects
+            </div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <div class="metric-label">Projects completed</div>
+              <div class="metric-value">5+ websites</div>
+              <div class="metric-sub">Business & demo projects</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Core strengths</div>
+              <div class="metric-value">Clean, fast UI</div>
+              <div class="metric-sub">Mobile‑first & SEO‑ready</div>
+            </div>
+          </div>
+
+          <div class="hero-skills">
+            <span>HTML • CSS • JS</span>
+            <span>Responsive layouts</span>
+            <span>WhatsApp integration</span>
+            <span>Hostinger deployment</span>
+          </div>
+
+          <div class="hero-card-footer">
+            <span>
+              <span class="dot"></span>
+              <strong>Next step:</strong> Share your business details
+            </span>
+            <small>Website in 10–12 days (typical)</small>
+          </div>
+        </article>
+      </aside>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-header">
+        <h2 class="section-title"><span style="color:white">About</span></h2>
+        <p class="section-sub">Who you’ll be working with</p>
+      </div>
+
+      <div class="about">
+        <article class="card">
+          <p>
+            Utkarsh designs and builds focused websites for small businesses that
+            want results, not just a “nice design”. Each project is built with a
+            clear goal: calls, WhatsApp enquiries, and trust for bigger deals.
+          </p>
+          <div class="about-list">
+            <div class="about-item">
+              <strong>Approach</strong>
+              <span>Minimal, fast and technically solid – no heavy animations or confusing layouts.</span>
+            </div>
+            <div class="about-item">
+              <strong>Tech stack</strong>
+              <span>HTML, CSS, JavaScript, basic PHP, MySQL, shared hosting (Hostinger, others).</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="about-list">
+            <div class="about-item">
+              <strong>Best fit clients</strong>
+              <span>Local businesses, service providers, students, and early‑stage entrepreneurs.</span>
+            </div>
+            <div class="about-item">
+              <strong>What you get</strong>
+              <span>Responsive site, WhatsApp button, call button, and content you can update easily.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-header">
+        <h2 class="section-title"><span style="color:white">Skills</span></h2>
+        <p class="section-sub">What goes into each project</p>
+      </div>
+
+      <article class="card">
+        <div class="skills-grid">
+          <div class="skill-pill">
+            <span>HTML • CSS • JS</span>
+            <span class="skill-level">UI structure & behaviour</span>
+          </div>
+          <div class="skill-pill">
+            <span>Responsive design</span>
+            <span class="skill-level">Mobile‑first layouts</span>
+          </div>
+          <div class="skill-pill">
+            <span>Landing pages</span>
+            <span class="skill-level">Lead‑focused sections</span>
+          </div>
+          <div class="skill-pill">
+            <span>Hosting & domain</span>
+            <span class="skill-level">Setup & deployment</span>
+          </div>
+          <div class="skill-pill">
+            <span>WhatsApp integration</span>
+            <span class="skill-level">Click‑to‑chat flows</span>
+          </div>
+          <div class="skill-pill">
+            <span>Basic SEO</span>
+            <span class="skill-level">Clean, crawlable code</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-header">
+        <h2 class="section-title"><span style="color:white">Projects</span></h2>
+        <p class="section-sub">Recent and demo work</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <span class="project-tag">Business website</span>
+          <h3 class="project-title">Varsha Irrigation & Landscape</h3>
+          <p class="project-desc">
+            Fast, mobile‑first site for an irrigation and landscape business,
+            focused on calls, AMC enquiries and WhatsApp leads.
+          </p>
+          <div class="project-meta">
+            <span>HTML • CSS • JS</span>
+            <span>WhatsApp CTA</span>
+            <span>Services & AMC pages</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer">
+              Live link
+            </a>
+            <a href="#" target="_blank" rel="noreferrer">
+              View code <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="project-tag">E‑commerce demo</span>
+          <h3 class="project-title">Fruitwala – Mini Store</h3>
+          <p class="project-desc">
+            Simple fruit store concept with clean product cards, price display
+            and WhatsApp checkout flow for quick orders.
+          </p>
+          <div class="project-meta">
+            <span>Frontend prototype</span>
+            <span>Cart UI</span>
+            <span>Order via WhatsApp</span>
+          </div>
+          <div class="project-links">
+            <a href="https://utkarshd2308.github.io/The-Fruit-Wala.com/" target="_blank" rel="noreferrer">
+              Live demo
+            </a>
+            <a href="https://github.com/Utkarshd2308/The-Fruit-Wala.com" target="_blank" rel="noreferrer">
+              View code <span>↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title"><span style="color:white">Contact</span></h2>
+        <p class="section-sub">Tell me about your project</p>
+      </div>
+
+      <div class="contact-grid">
+        <article class="card contact-details">
+          <p><span style="color: white">
+            Share a few lines about your business, what you want from the
+            website, and any examples you like. You’ll get a clear plan and
+            timeline in return.
+            </span>
+          </p>
+          <p>
+            <strong><span style="color:white">E-mail :- </span></strong>
+  <a href="mailto:hello@codewave.studio?subject=Project%20Enquiry">
+   deshmukhutkarsh2385@gmail.com
+  </a>
+          </p>
+          <p>
+            <strong><span style="color:white">WhatsApp :- </span></strong>
+            <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Utkarsh,%20I%20need%20a%20website.">
+             +91‑8087724038
+            </a>
+          </p>
+          <p>
+            <strong>Availability:</strong> Evenings and weekends (IST).
+          </p>
+        </article>
+      </div>
+    </section>
+<br>
+    <footer class="footer">
+      <span>
+        <strong><span style="color:white">Utkarsh's Codewave Web Studio</span></strong><span style="color:#e5e7eb"> – Web developer helping businesses get online.</span>
+      </span>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.instagram" target="_blank" rel="noreferrer">Instagram</a>
+      </div>
+      <br>
+      <div class="footer-bottom">
+        <span style="color:#e5e7eb"><div align="center">© 2025 Codewave Web Studio. Built with ❤️ in Maharashtra.</div></span>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
